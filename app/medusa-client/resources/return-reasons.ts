@@ -1,9 +1,9 @@
 import BaseResource from "./base"
-import {
+import type {
   StoreReturnReasonsListRes,
   StoreReturnReasonsRes,
 } from "@medusajs/medusa"
-import { ResponsePromise } from "../typings"
+import type { ResponsePromise } from "../typings"
 
 class ReturnReasonsResource extends BaseResource {
   /**

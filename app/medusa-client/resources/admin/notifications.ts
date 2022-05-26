@@ -1,11 +1,11 @@
-import {
+import type {
   AdminGetNotificationsParams,
   AdminNotificationsListRes,
   AdminNotificationsRes,
   AdminPostNotificationsNotificationResendReq,
 } from "@medusajs/medusa"
 import qs from "qs"
-import { ResponsePromise } from "../.."
+import type { ResponsePromise } from "../.."
 import BaseResource from "../base"
 
 class AdminNotificationsResource extends BaseResource {

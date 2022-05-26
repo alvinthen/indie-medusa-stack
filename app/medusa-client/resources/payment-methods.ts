@@ -1,5 +1,5 @@
-import { StoreCustomersListPaymentMethodsRes } from '@medusajs/medusa'
-import { ResponsePromise } from "../typings"
+import type { StoreCustomersListPaymentMethodsRes } from '@medusajs/medusa'
+import type { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 class PaymentMethodsResource extends BaseResource {

@@ -1,4 +1,4 @@
-import {
+import type {
   AdminPostCollectionsReq,
   AdminCollectionsRes,
   AdminPostCollectionsCollectionReq,
@@ -7,7 +7,7 @@ import {
   AdminGetCollectionsParams,
 } from "@medusajs/medusa"
 import qs from "qs"
-import { ResponsePromise } from "../../typings"
+import type { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 class AdminCollectionsResource extends BaseResource {

@@ -1,4 +1,4 @@
-import {
+import type {
   AdminPostRegionsReq,
   AdminRegionsRes,
   AdminPostRegionsRegionReq,
@@ -12,7 +12,7 @@ import {
   AdminGetRegionsRegionFulfillmentOptionsRes,
 } from "@medusajs/medusa"
 import qs from "qs"
-import { ResponsePromise } from "../../typings"
+import type { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 class AdminRegionsResource extends BaseResource {

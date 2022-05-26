@@ -1,9 +1,9 @@
-import {
+import type {
   StoreCustomersRes,
   StorePostCustomersCustomerAddressesAddressReq,
   StorePostCustomersCustomerAddressesReq,
 } from "@medusajs/medusa"
-import { ResponsePromise } from "../typings"
+import type { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 class AddressesResource extends BaseResource {

@@ -1,4 +1,4 @@
-import {
+import type {
   StoreCustomersListOrdersRes,
   StoreCustomersRes,
   StoreGetCustomersCustomerOrdersParams,
@@ -7,7 +7,7 @@ import {
   StorePostCustomersReq,
 } from "@medusajs/medusa"
 import qs from "qs"
-import { ResponsePromise } from "../typings"
+import type { ResponsePromise } from "../typings"
 import AddressesResource from "./addresses"
 import BaseResource from "./base"
 import PaymentMethodsResource from "./payment-methods"

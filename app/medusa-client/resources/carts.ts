@@ -1,4 +1,4 @@
-import {
+import type {
   StoreCartsRes,
   StoreCompleteCartRes,
   StorePostCartReq,
@@ -7,7 +7,7 @@ import {
   StorePostCartsCartReq,
   StorePostCartsCartShippingMethodReq,
 } from "@medusajs/medusa"
-import { ResponsePromise } from "../typings"
+import type { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 import LineItemsResource from "./line-items"
 

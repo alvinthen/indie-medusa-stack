@@ -1,6 +1,6 @@
-import { AdminVariantsListRes, AdminGetVariantsParams } from "@medusajs/medusa"
+import type { AdminVariantsListRes, AdminGetVariantsParams } from "@medusajs/medusa"
 import qs from "qs"
-import { ResponsePromise } from "../.."
+import type { ResponsePromise } from "../.."
 import BaseResource from "../base"
 
 class AdminVariantsResource extends BaseResource {

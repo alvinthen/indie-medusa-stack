@@ -1,4 +1,4 @@
-import Client from "../request"
+import type Client from "../request"
 
 export default class BaseResource {
   public client: Client

@@ -1,4 +1,4 @@
-import {
+import type {
   AdminPostCustomerGroupsReq,
   AdminCustomerGroupsRes,
   AdminGetCustomerGroupsParams,
@@ -14,7 +14,7 @@ import {
 import qs from "qs"
 
 import BaseResource from "../base"
-import { ResponsePromise } from "../.."
+import type { ResponsePromise } from "../.."
 
 class AdminCustomerGroupsResource extends BaseResource {
   /**

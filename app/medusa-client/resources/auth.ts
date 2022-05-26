@@ -1,9 +1,9 @@
-import {
+import type {
   StoreGetAuthEmailRes,
   StorePostAuthReq,
   StoreAuthRes,
 } from "@medusajs/medusa"
-import { ResponsePromise } from "../typings"
+import type { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 class AuthResource extends BaseResource {

@@ -1,10 +1,10 @@
-import {
+import type {
   AdminPaymentProvidersList,
   AdminTaxProvidersList,
   AdminPostStoreReq,
   AdminStoresRes,
 } from "@medusajs/medusa"
-import { ResponsePromise } from "../../typings"
+import type { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 class AdminStoresResource extends BaseResource {

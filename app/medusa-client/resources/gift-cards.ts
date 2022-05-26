@@ -1,5 +1,5 @@
-import { StoreGiftCardsRes } from "@medusajs/medusa"
-import { ResponsePromise } from "../typings"
+import type { StoreGiftCardsRes } from "@medusajs/medusa"
+import type { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 class GiftCardsResource extends BaseResource {

@@ -1,9 +1,9 @@
-import {
+import type {
   AdminGetProductTypesParams,
   AdminProductTypesListRes,
 } from "@medusajs/medusa"
 import qs from "qs"
-import { ResponsePromise } from "../../typings"
+import type { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 class AdminProductTypesResource extends BaseResource {

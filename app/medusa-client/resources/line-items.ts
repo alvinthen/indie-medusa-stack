@@ -1,9 +1,9 @@
-import {
+import type {
   StoreCartsRes,
   StorePostCartsCartLineItemsItemReq,
   StorePostCartsCartLineItemsReq,
 } from "@medusajs/medusa"
-import { ResponsePromise } from "../typings"
+import type { ResponsePromise } from "../typings"
 import BaseResource from "./base"
 
 class LineItemsResource extends BaseResource {

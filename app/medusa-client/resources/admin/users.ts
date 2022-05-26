@@ -1,11 +1,11 @@
-import {
+import type {
   AdminDeleteUserRes,
   AdminResetPasswordRequest,
   AdminResetPasswordTokenRequest,
   AdminUserRes,
   AdminUsersListRes,
 } from "@medusajs/medusa"
-import {
+import type {
   ResponsePromise,
   AdminCreateUserPayload,
   AdminUpdateUserPayload,

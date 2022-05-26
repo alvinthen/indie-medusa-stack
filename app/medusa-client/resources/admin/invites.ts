@@ -1,9 +1,9 @@
-import {
+import type {
   AdminInviteDeleteRes,
   AdminListInvitesRes,
   AdminPostInvitesInviteAcceptReq,
 } from "@medusajs/medusa"
-import { AdminPostInvitesPayload, ResponsePromise } from "../.."
+import type { AdminPostInvitesPayload, ResponsePromise } from "../.."
 import BaseResource from "../base"
 
 class AdminInvitesResource extends BaseResource {

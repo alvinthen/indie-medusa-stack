@@ -1,4 +1,4 @@
-import {
+import type {
   AdminCustomersListRes,
   AdminCustomersRes,
   AdminGetCustomersParams,
@@ -6,7 +6,7 @@ import {
   AdminPostCustomersCustomerReq,
 } from "@medusajs/medusa"
 import qs from "qs"
-import { ResponsePromise } from "../.."
+import type { ResponsePromise } from "../.."
 import BaseResource from "../base"
 
 class AdminCustomersResource extends BaseResource {

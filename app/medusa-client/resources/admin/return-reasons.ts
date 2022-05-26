@@ -1,11 +1,11 @@
-import {
+import type {
   AdminPostReturnReasonsReq,
   AdminReturnReasonsRes,
   AdminReturnReasonsDeleteRes,
   AdminReturnReasonsListRes,
   AdminPostReturnReasonsReasonReq,
 } from "@medusajs/medusa"
-import { ResponsePromise } from "../../typings"
+import type { ResponsePromise } from "../../typings"
 import BaseResource from "../base"
 
 class AdminReturnReasonsResource extends BaseResource {

@@ -1,9 +1,9 @@
-import BaseResource from "./base"
+import BaseResource from './base';
 import type {
   StoreReturnReasonsListRes,
   StoreReturnReasonsRes,
-} from "@medusajs/medusa"
-import type { ResponsePromise } from "../typings"
+} from '@medusajs/medusa';
+import type { ResponsePromise } from '../typings';
 
 class ReturnReasonsResource extends BaseResource {
   /**
@@ -12,9 +12,12 @@ class ReturnReasonsResource extends BaseResource {
    * @param customHeaders
    * @return {ResponsePromise<StoreReturnReasonsRes>}
    */
-  retrieve(id: string, customHeaders: Record<string, any> = {}): ResponsePromise<StoreReturnReasonsRes> {
-    const path = `/store/return-reasons/${id}`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+  retrieve(
+    id: string,
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreReturnReasonsRes> {
+    const path = `/store/return-reasons/${id}`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 
   /**
@@ -22,10 +25,12 @@ class ReturnReasonsResource extends BaseResource {
    * @param customHeaders
    * @return {ResponsePromise<StoreReturnReasonsListRes>}
    */
-  list(customHeaders: Record<string, any> = {}): ResponsePromise<StoreReturnReasonsListRes> {
-    const path = `/store/return-reasons`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+  list(
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreReturnReasonsListRes> {
+    const path = `/store/return-reasons`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 }
 
-export default ReturnReasonsResource
+export default ReturnReasonsResource;

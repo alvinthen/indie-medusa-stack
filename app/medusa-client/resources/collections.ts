@@ -2,10 +2,10 @@ import type {
   StoreCollectionsRes,
   StoreCollectionsListRes,
   StoreGetCollectionsParams,
-} from "@medusajs/medusa"
-import qs from "qs"
-import type { ResponsePromise } from "../typings"
-import BaseResource from "./base"
+} from '@medusajs/medusa';
+import qs from 'qs';
+import type { ResponsePromise } from '../typings';
+import BaseResource from './base';
 
 class CollectionsResource extends BaseResource {
   /**
@@ -14,9 +14,12 @@ class CollectionsResource extends BaseResource {
    * @param customHeaders
    * @return {ResponsePromise<StoreCollectionsRes>}
    */
-  retrieve(id: string, customHeaders: Record<string, any> = {}): ResponsePromise<StoreCollectionsRes> {
-    const path = `/store/collections/${id}`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+  retrieve(
+    id: string,
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreCollectionsRes> {
+    const path = `/store/collections/${id}`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 
   /**
@@ -27,16 +30,17 @@ class CollectionsResource extends BaseResource {
    */
   list(
     query?: StoreGetCollectionsParams,
-    customHeaders: Record<string, any> = {}): ResponsePromise<StoreCollectionsListRes> {
-    let path = `/store/collections`
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreCollectionsListRes> {
+    let path = `/store/collections`;
 
     if (query) {
-      const queryString = qs.stringify(query)
-      path = `/store/collections?${queryString}`
+      const queryString = qs.stringify(query);
+      path = `/store/collections?${queryString}`;
     }
 
-    return this.client.request("GET", path, {}, {}, customHeaders)
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 }
 
-export default CollectionsResource
+export default CollectionsResource;

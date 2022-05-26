@@ -1,21 +1,21 @@
-import type { AdminUploadRes, IAdminPostUploadsFile } from "@medusajs/medusa"
-import type { ResponsePromise } from "../../typings"
-import BaseResource from "../base"
-import FormData from "form-data"
+import type { AdminUploadRes, IAdminPostUploadsFile } from '@medusajs/medusa';
+import type { ResponsePromise } from '../../typings';
+import BaseResource from '../base';
+import FormData from 'form-data';
 
 class AdminUploadsResource extends BaseResource {
   private headers = {
-    "Content-Type": "multipart/form-data",
-  }
+    'Content-Type': 'multipart/form-data',
+  };
 
   create(file: IAdminPostUploadsFile): ResponsePromise<AdminUploadRes> {
-    const path = `/admin/uploads`
+    const path = `/admin/uploads`;
 
-    const payload = new FormData()
-    payload.append("files", file)
+    const payload = new FormData();
+    payload.append('files', file);
 
-    return this.client.request("POST", path, payload, {}, this.headers)
+    return this.client.request('POST', path, payload, {}, this.headers);
   }
 }
 
-export default AdminUploadsResource
+export default AdminUploadsResource;

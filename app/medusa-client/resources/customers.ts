@@ -5,16 +5,16 @@ import type {
   StorePostCustomersCustomerPasswordTokenReq,
   StorePostCustomersCustomerReq,
   StorePostCustomersReq,
-} from "@medusajs/medusa"
-import qs from "qs"
-import type { ResponsePromise } from "../typings"
-import AddressesResource from "./addresses"
-import BaseResource from "./base"
-import PaymentMethodsResource from "./payment-methods"
+} from '@medusajs/medusa';
+import qs from 'qs';
+import type { ResponsePromise } from '../typings';
+import AddressesResource from './addresses';
+import BaseResource from './base';
+import PaymentMethodsResource from './payment-methods';
 
 class CustomerResource extends BaseResource {
-  public paymentMethods = new PaymentMethodsResource(this.client)
-  public addresses = new AddressesResource(this.client)
+  public paymentMethods = new PaymentMethodsResource(this.client);
+  public addresses = new AddressesResource(this.client);
 
   /**
    * Creates a customer
@@ -24,10 +24,10 @@ class CustomerResource extends BaseResource {
    */
   create(
     payload: StorePostCustomersReq,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<StoreCustomersRes> {
-    const path = `/store/customers`
-    return this.client.request("POST", path, payload, {}, customHeaders)
+    const path = `/store/customers`;
+    return this.client.request('POST', path, payload, {}, customHeaders);
   }
 
   /**
@@ -36,10 +36,10 @@ class CustomerResource extends BaseResource {
    * @return {ResponsePromise<StoreCustomersRes>}
    */
   retrieve(
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<StoreCustomersRes> {
-    const path = `/store/customers/me`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+    const path = `/store/customers/me`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 
   /**
@@ -50,10 +50,10 @@ class CustomerResource extends BaseResource {
    */
   update(
     payload: StorePostCustomersCustomerReq,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<StoreCustomersRes> {
-    const path = `/store/customers/me`
-    return this.client.request("POST", path, payload, {}, customHeaders)
+    const path = `/store/customers/me`;
+    return this.client.request('POST', path, payload, {}, customHeaders);
   }
 
   /**
@@ -64,16 +64,16 @@ class CustomerResource extends BaseResource {
    */
   listOrders(
     params?: StoreGetCustomersCustomerOrdersParams,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<StoreCustomersListOrdersRes> {
-    let path = `/store/customers/me/orders`
+    let path = `/store/customers/me/orders`;
     if (params) {
-      const query = qs.stringify(params)
+      const query = qs.stringify(params);
       if (query) {
-        path += `?${query}`
+        path += `?${query}`;
       }
     }
-    return this.client.request("GET", path, {}, {}, customHeaders)
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 
   /**
@@ -84,10 +84,10 @@ class CustomerResource extends BaseResource {
    */
   resetPassword(
     payload: StorePostCustomersCustomerPasswordTokenReq,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<StoreCustomersRes> {
-    const path = `/store/customers/password-reset`
-    return this.client.request("POST", path, payload, {}, customHeaders)
+    const path = `/store/customers/password-reset`;
+    return this.client.request('POST', path, payload, {}, customHeaders);
   }
 
   /**
@@ -99,11 +99,11 @@ class CustomerResource extends BaseResource {
    */
   generatePasswordToken(
     payload: StorePostCustomersCustomerPasswordTokenReq,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise {
-    const path = `/store/customers/password-token`
-    return this.client.request("POST", path, payload, {}, customHeaders)
+    const path = `/store/customers/password-token`;
+    return this.client.request('POST', path, payload, {}, customHeaders);
   }
 }
 
-export default CustomerResource
+export default CustomerResource;

@@ -4,10 +4,10 @@ import type {
   AdminGetCustomersParams,
   AdminPostCustomersReq,
   AdminPostCustomersCustomerReq,
-} from "@medusajs/medusa"
-import qs from "qs"
-import type { ResponsePromise } from "../.."
-import BaseResource from "../base"
+} from '@medusajs/medusa';
+import qs from 'qs';
+import type { ResponsePromise } from '../..';
+import BaseResource from '../base';
 
 class AdminCustomersResource extends BaseResource {
   /**
@@ -17,10 +17,10 @@ class AdminCustomersResource extends BaseResource {
    */
   create(
     payload: AdminPostCustomersReq,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminCustomersRes> {
-    const path = `/admin/customers`
-    return this.client.request("POST", path, payload, {}, customHeaders)
+    const path = `/admin/customers`;
+    return this.client.request('POST', path, payload, {}, customHeaders);
   }
 
   /**
@@ -32,10 +32,10 @@ class AdminCustomersResource extends BaseResource {
   update(
     id: string,
     payload: AdminPostCustomersCustomerReq,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminCustomersRes> {
-    const path = `/admin/customers/${id}`
-    return this.client.request("POST", path, payload, {}, customHeaders)
+    const path = `/admin/customers/${id}`;
+    return this.client.request('POST', path, payload, {}, customHeaders);
   }
 
   /**
@@ -45,10 +45,10 @@ class AdminCustomersResource extends BaseResource {
    */
   retrieve(
     id: string,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminCustomersRes> {
-    const path = `/admin/customers/${id}`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+    const path = `/admin/customers/${id}`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 
   /**
@@ -58,17 +58,17 @@ class AdminCustomersResource extends BaseResource {
    */
   list(
     query?: AdminGetCustomersParams,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminCustomersListRes> {
-    let path = `/admin/customers`
+    let path = `/admin/customers`;
 
     if (query) {
-      const queryString = qs.stringify(query)
-      path = `/admin/customers?${queryString}`
+      const queryString = qs.stringify(query);
+      path = `/admin/customers?${queryString}`;
     }
 
-    return this.client.request("GET", path, {}, {}, customHeaders)
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 }
 
-export default AdminCustomersResource
+export default AdminCustomersResource;

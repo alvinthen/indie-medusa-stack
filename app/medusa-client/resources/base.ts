@@ -1,9 +1,9 @@
-import type Client from "../request"
+import type Client from '../request';
 
 export default class BaseResource {
-  public client: Client
+  public client: Client;
 
   constructor(client: Client) {
-    this.client = client
+    this.client = client;
   }
 }

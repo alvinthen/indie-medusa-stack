@@ -1,24 +1,24 @@
 import type {
   AdminGetProductTagsParams,
   AdminProductTagsListRes,
-} from "@medusajs/medusa"
-import qs from "qs"
-import type { ResponsePromise } from "../../typings"
-import BaseResource from "../base"
+} from '@medusajs/medusa';
+import qs from 'qs';
+import type { ResponsePromise } from '../../typings';
+import BaseResource from '../base';
 
 class AdminProductTagsResource extends BaseResource {
   list(
-    query?: AdminGetProductTagsParams
+    query?: AdminGetProductTagsParams,
   ): ResponsePromise<AdminProductTagsListRes> {
-    let path = `/admin/product-tags`
+    let path = `/admin/product-tags`;
 
     if (query) {
-      const queryString = qs.stringify(query)
-      path = `/admin/product-tags?${queryString}`
+      const queryString = qs.stringify(query);
+      path = `/admin/product-tags?${queryString}`;
     }
 
-    return this.client.request("GET", path)
+    return this.client.request('GET', path);
   }
 }
 
-export default AdminProductTagsResource
+export default AdminProductTagsResource;

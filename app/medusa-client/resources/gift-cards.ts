@@ -1,6 +1,6 @@
-import type { StoreGiftCardsRes } from "@medusajs/medusa"
-import type { ResponsePromise } from "../typings"
-import BaseResource from "./base"
+import type { StoreGiftCardsRes } from '@medusajs/medusa';
+import type { ResponsePromise } from '../typings';
+import BaseResource from './base';
 
 class GiftCardsResource extends BaseResource {
   /**
@@ -9,10 +9,13 @@ class GiftCardsResource extends BaseResource {
    * @param customHeaders
    * @return {ResponsePromise<StoreGiftCardsRes>}
    */
-  retrieve(code: string, customHeaders: Record<string, any> = {}): ResponsePromise<StoreGiftCardsRes> {
-    const path = `/store/gift-cards/${code}`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+  retrieve(
+    code: string,
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreGiftCardsRes> {
+    const path = `/store/gift-cards/${code}`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 }
 
-export default GiftCardsResource
+export default GiftCardsResource;

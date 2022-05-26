@@ -1,24 +1,24 @@
 import type {
   AdminGetProductTypesParams,
   AdminProductTypesListRes,
-} from "@medusajs/medusa"
-import qs from "qs"
-import type { ResponsePromise } from "../../typings"
-import BaseResource from "../base"
+} from '@medusajs/medusa';
+import qs from 'qs';
+import type { ResponsePromise } from '../../typings';
+import BaseResource from '../base';
 
 class AdminProductTypesResource extends BaseResource {
   list(
-    query?: AdminGetProductTypesParams
+    query?: AdminGetProductTypesParams,
   ): ResponsePromise<AdminProductTypesListRes> {
-    let path = `/admin/product-types`
+    let path = `/admin/product-types`;
 
     if (query) {
-      const queryString = qs.stringify(query)
-      path = `/admin/product-types?${queryString}`
+      const queryString = qs.stringify(query);
+      path = `/admin/product-types?${queryString}`;
     }
 
-    return this.client.request("GET", path)
+    return this.client.request('GET', path);
   }
 }
 
-export default AdminProductTypesResource
+export default AdminProductTypesResource;

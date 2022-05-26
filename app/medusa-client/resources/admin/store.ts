@@ -3,9 +3,9 @@ import type {
   AdminTaxProvidersList,
   AdminPostStoreReq,
   AdminStoresRes,
-} from "@medusajs/medusa"
-import type { ResponsePromise } from "../../typings"
-import BaseResource from "../base"
+} from '@medusajs/medusa';
+import type { ResponsePromise } from '../../typings';
+import BaseResource from '../base';
 
 class AdminStoresResource extends BaseResource {
   /**
@@ -16,10 +16,10 @@ class AdminStoresResource extends BaseResource {
    */
   update(
     payload: AdminPostStoreReq,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminStoresRes> {
-    const path = `/admin/store/`
-    return this.client.request("POST", path, payload, {}, customHeaders)
+    const path = `/admin/store/`;
+    return this.client.request('POST', path, payload, {}, customHeaders);
   }
 
   /**
@@ -30,10 +30,10 @@ class AdminStoresResource extends BaseResource {
    */
   addCurrency(
     currency_code: string,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminStoresRes> {
-    const path = `/admin/store/${currency_code}`
-    return this.client.request("POST", path, {}, {}, customHeaders)
+    const path = `/admin/store/${currency_code}`;
+    return this.client.request('POST', path, {}, {}, customHeaders);
   }
 
   /**
@@ -44,10 +44,10 @@ class AdminStoresResource extends BaseResource {
    */
   deleteCurrency(
     currency_code: string,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminStoresRes> {
-    const path = `/admin/store/currencies/${currency_code}`
-    return this.client.request("DELETE", path, {}, {}, customHeaders)
+    const path = `/admin/store/currencies/${currency_code}`;
+    return this.client.request('DELETE', path, {}, {}, customHeaders);
   }
 
   /**
@@ -55,10 +55,10 @@ class AdminStoresResource extends BaseResource {
    * @returns a medusa store
    */
   retrieve(
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminStoresRes> {
-    const path = `/admin/store/`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+    const path = `/admin/store/`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 
   /**
@@ -66,10 +66,10 @@ class AdminStoresResource extends BaseResource {
    * @returns a list of payment providers configured on the store
    */
   listPaymentProviders(
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminPaymentProvidersList> {
-    const path = `/admin/store/payment-providers`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+    const path = `/admin/store/payment-providers`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 
   /**
@@ -77,11 +77,11 @@ class AdminStoresResource extends BaseResource {
    * @returns a list of payment providers configured on the store
    */
   listTaxProviders(
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminTaxProvidersList> {
-    const path = `/admin/store/tax-providers`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+    const path = `/admin/store/tax-providers`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 }
 
-export default AdminStoresResource
+export default AdminStoresResource;

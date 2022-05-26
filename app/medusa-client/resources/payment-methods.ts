@@ -1,6 +1,6 @@
-import type { StoreCustomersListPaymentMethodsRes } from '@medusajs/medusa'
-import type { ResponsePromise } from "../typings"
-import BaseResource from "./base"
+import type { StoreCustomersListPaymentMethodsRes } from '@medusajs/medusa';
+import type { ResponsePromise } from '../typings';
+import BaseResource from './base';
 
 class PaymentMethodsResource extends BaseResource {
   /**
@@ -9,10 +9,13 @@ class PaymentMethodsResource extends BaseResource {
    * @param customHeaders
    * @return {StoreCustomersListPaymentMethodsRes}
    */
-  list(id: string, customHeaders: Record<string, any> = {}): ResponsePromise<StoreCustomersListPaymentMethodsRes> {
-    const path = `/store/carts/${id}/payment-methods`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+  list(
+    id: string,
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreCustomersListPaymentMethodsRes> {
+    const path = `/store/carts/${id}/payment-methods`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 }
 
-export default PaymentMethodsResource
+export default PaymentMethodsResource;

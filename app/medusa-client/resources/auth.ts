@@ -2,9 +2,9 @@ import type {
   StoreGetAuthEmailRes,
   StorePostAuthReq,
   StoreAuthRes,
-} from "@medusajs/medusa"
-import type { ResponsePromise } from "../typings"
-import BaseResource from "./base"
+} from '@medusajs/medusa';
+import type { ResponsePromise } from '../typings';
+import BaseResource from './base';
 
 class AuthResource extends BaseResource {
   /**
@@ -13,9 +13,12 @@ class AuthResource extends BaseResource {
    * @param customHeaders
    * @return {ResponsePromise<StoreAuthRes>}
    */
-  authenticate(payload: StorePostAuthReq, customHeaders: Record<string, any> = {}): ResponsePromise<StoreAuthRes> {
-    const path = `/store/auth`
-    return this.client.request("POST", path, payload, {}, customHeaders)
+  authenticate(
+    payload: StorePostAuthReq,
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreAuthRes> {
+    const path = `/store/auth`;
+    return this.client.request('POST', path, payload, {}, customHeaders);
   }
 
   /**
@@ -24,9 +27,11 @@ class AuthResource extends BaseResource {
    * @param customHeaders
    * @return {ResponsePromise<StoreAuthRes>}
    */
-  getSession(customHeaders: Record<string, any> = {}): ResponsePromise<StoreAuthRes> {
-    const path = `/store/auth`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+  getSession(
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreAuthRes> {
+    const path = `/store/auth`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 
   /**
@@ -35,10 +40,13 @@ class AuthResource extends BaseResource {
    * @param customHeaders
    * @return {ResponsePromise<StoreGetAuthEmailRes>}
    */
-  exists(email: string, customHeaders: Record<string, any> = {}): ResponsePromise<StoreGetAuthEmailRes> {
-    const path = `/store/auth/${email}`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+  exists(
+    email: string,
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreGetAuthEmailRes> {
+    const path = `/store/auth/${email}`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 }
 
-export default AuthResource
+export default AuthResource;

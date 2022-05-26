@@ -1,61 +1,61 @@
-const crypto = require("crypto");
-const fs = require("fs/promises");
-const path = require("path");
+const crypto = require('crypto');
+const fs = require('fs/promises');
+const path = require('path');
 
-const toml = require("@iarna/toml");
-const sort = require("sort-package-json");
+const toml = require('@iarna/toml');
+const sort = require('sort-package-json');
 
 function escapeRegExp(string) {
   // $& means the whole matched string
-  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function getRandomString(length) {
-  return crypto.randomBytes(length).toString("hex");
+  return crypto.randomBytes(length).toString('hex');
 }
 
 async function main({ rootDirectory }) {
-  const README_PATH = path.join(rootDirectory, "README.md");
-  const FLY_TOML_PATH = path.join(rootDirectory, "fly.toml");
-  const EXAMPLE_ENV_PATH = path.join(rootDirectory, ".env.example");
-  const ENV_PATH = path.join(rootDirectory, ".env");
-  const PACKAGE_JSON_PATH = path.join(rootDirectory, "package.json");
+  const README_PATH = path.join(rootDirectory, 'README.md');
+  const FLY_TOML_PATH = path.join(rootDirectory, 'fly.toml');
+  const EXAMPLE_ENV_PATH = path.join(rootDirectory, '.env.example');
+  const ENV_PATH = path.join(rootDirectory, '.env');
+  const PACKAGE_JSON_PATH = path.join(rootDirectory, 'package.json');
 
-  const REPLACER = "indie-medusa-stack-template";
+  const REPLACER = 'indie-medusa-stack-template';
 
   const DIR_NAME = path.basename(rootDirectory);
   const SUFFIX = getRandomString(2);
 
-  const APP_NAME = (DIR_NAME + "-" + SUFFIX)
+  const APP_NAME = (DIR_NAME + '-' + SUFFIX)
     // get rid of anything that's not allowed in an app name
-    .replace(/[^a-zA-Z0-9-_]/g, "-");
+    .replace(/[^a-zA-Z0-9-_]/g, '-');
 
   const [prodContent, readme, env, packageJson] = await Promise.all([
-    fs.readFile(FLY_TOML_PATH, "utf-8"),
-    fs.readFile(README_PATH, "utf-8"),
-    fs.readFile(EXAMPLE_ENV_PATH, "utf-8"),
-    fs.readFile(PACKAGE_JSON_PATH, "utf-8"),
+    fs.readFile(FLY_TOML_PATH, 'utf-8'),
+    fs.readFile(README_PATH, 'utf-8'),
+    fs.readFile(EXAMPLE_ENV_PATH, 'utf-8'),
+    fs.readFile(PACKAGE_JSON_PATH, 'utf-8'),
   ]);
 
   const newEnv = env.replace(
     /^SESSION_SECRET=.*$/m,
-    `SESSION_SECRET="${getRandomString(16)}"`
+    `SESSION_SECRET="${getRandomString(16)}"`,
   );
 
   const prodToml = toml.parse(prodContent);
   prodToml.app = prodToml.app.replace(REPLACER, APP_NAME);
 
   const newReadme = readme.replace(
-    new RegExp(escapeRegExp(REPLACER), "g"),
-    APP_NAME
+    new RegExp(escapeRegExp(REPLACER), 'g'),
+    APP_NAME,
   );
 
   const newPackageJson =
     JSON.stringify(
       sort({ ...JSON.parse(packageJson), name: APP_NAME }),
       null,
-      2
-    ) + "\n";
+      2,
+    ) + '\n';
 
   await Promise.all([
     fs.writeFile(FLY_TOML_PATH, toml.stringify(prodToml)),
@@ -63,21 +63,21 @@ async function main({ rootDirectory }) {
     fs.writeFile(ENV_PATH, newEnv),
     fs.writeFile(PACKAGE_JSON_PATH, newPackageJson),
     fs.copyFile(
-      path.join(rootDirectory, "remix.init", "gitignore"),
-      path.join(rootDirectory, ".gitignore")
+      path.join(rootDirectory, 'remix.init', 'gitignore'),
+      path.join(rootDirectory, '.gitignore'),
     ),
-    fs.rm(path.join(rootDirectory, ".github/ISSUE_TEMPLATE"), {
+    fs.rm(path.join(rootDirectory, '.github/ISSUE_TEMPLATE'), {
       recursive: true,
     }),
-    fs.rm(path.join(rootDirectory, ".github/PULL_REQUEST_TEMPLATE.md")),
-    fs.rm(path.join(rootDirectory, ".github/FUNDING.yml")),
+    fs.rm(path.join(rootDirectory, '.github/PULL_REQUEST_TEMPLATE.md')),
+    fs.rm(path.join(rootDirectory, '.github/FUNDING.yml')),
   ]);
 
   console.log(
     `Setup is complete. You're now ready to rock and roll 🤘
 
 Start development with \`npm run dev\`
-    `.trim()
+    `.trim(),
   );
 }
 

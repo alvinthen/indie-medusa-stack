@@ -1,6 +1,6 @@
-import type { ResponsePromise } from "../typings"
-import type { StoreSwapsRes, StorePostSwapsReq } from "@medusajs/medusa"
-import BaseResource from "./base"
+import type { ResponsePromise } from '../typings';
+import type { StoreSwapsRes, StorePostSwapsReq } from '@medusajs/medusa';
+import BaseResource from './base';
 
 class SwapsResource extends BaseResource {
   /**
@@ -9,9 +9,12 @@ class SwapsResource extends BaseResource {
    * @param customHeaders
    * @return {ResponsePromise<StoreSwapsRes>}
    */
-  create(payload: StorePostSwapsReq, customHeaders: Record<string, any> = {}): ResponsePromise<StoreSwapsRes> {
-    const path = `/store/swaps`
-    return this.client.request("POST", path, payload, {}, customHeaders)
+  create(
+    payload: StorePostSwapsReq,
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreSwapsRes> {
+    const path = `/store/swaps`;
+    return this.client.request('POST', path, payload, {}, customHeaders);
   }
 
   /**
@@ -20,10 +23,13 @@ class SwapsResource extends BaseResource {
    * @param customHeaders
    * @return {ResponsePromise<StoreSwapsRes>}
    */
-  retrieveByCartId(cart_id: string, customHeaders: Record<string, any> = {}): ResponsePromise<StoreSwapsRes> {
-    const path = `/store/swaps/${cart_id}`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+  retrieveByCartId(
+    cart_id: string,
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreSwapsRes> {
+    const path = `/store/swaps/${cart_id}`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 }
 
-export default SwapsResource
+export default SwapsResource;

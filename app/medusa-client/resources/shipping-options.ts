@@ -1,10 +1,10 @@
 import type {
   StoreGetShippingOptionsParams,
   StoreShippingOptionsListRes,
-} from "@medusajs/medusa"
-import qs from "qs"
-import type { ResponsePromise } from "../typings"
-import BaseResource from "./base"
+} from '@medusajs/medusa';
+import qs from 'qs';
+import type { ResponsePromise } from '../typings';
+import BaseResource from './base';
 
 class ShippingOptionsResource extends BaseResource {
   /**
@@ -13,9 +13,12 @@ class ShippingOptionsResource extends BaseResource {
    * @param customHeaders
    * @return {ResponsePromise<StoreShippingOptionsListRes>}
    */
-  listCartOptions(cart_id: string, customHeaders: Record<string, any> = {}): ResponsePromise<StoreShippingOptionsListRes> {
-    const path = `/store/shipping-options/${cart_id}`
-    return this.client.request("GET", path, {}, {}, customHeaders)
+  listCartOptions(
+    cart_id: string,
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreShippingOptionsListRes> {
+    const path = `/store/shipping-options/${cart_id}`;
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 
   /**
@@ -26,16 +29,17 @@ class ShippingOptionsResource extends BaseResource {
    */
   list(
     query?: StoreGetShippingOptionsParams,
-    customHeaders: Record<string, any> = {}): ResponsePromise<StoreShippingOptionsListRes> {
-    let path = `/store/shipping-options`
+    customHeaders: Record<string, any> = {},
+  ): ResponsePromise<StoreShippingOptionsListRes> {
+    let path = `/store/shipping-options`;
 
     if (query) {
-      const queryString = qs.stringify(query)
-      path = `/store/shipping-options?${queryString}`
+      const queryString = qs.stringify(query);
+      path = `/store/shipping-options?${queryString}`;
     }
 
-    return this.client.request("GET", path, {}, {}, customHeaders)
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 }
 
-export default ShippingOptionsResource
+export default ShippingOptionsResource;

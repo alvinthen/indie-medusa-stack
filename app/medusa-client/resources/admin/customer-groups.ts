@@ -10,11 +10,11 @@ import type {
   AdminGetCustomerGroupsGroupParams,
   AdminCustomersListRes,
   AdminGetCustomersParams,
-} from "@medusajs/medusa"
-import qs from "qs"
+} from '@medusajs/medusa';
+import qs from 'qs';
 
-import BaseResource from "../base"
-import type { ResponsePromise } from "../.."
+import BaseResource from '../base';
+import type { ResponsePromise } from '../..';
 
 class AdminCustomerGroupsResource extends BaseResource {
   /**
@@ -25,10 +25,10 @@ class AdminCustomerGroupsResource extends BaseResource {
    */
   create(
     payload: AdminPostCustomerGroupsReq,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminCustomerGroupsRes> {
-    const path = `/admin/customer-groups`
-    return this.client.request("POST", path, payload, {}, customHeaders)
+    const path = `/admin/customer-groups`;
+    return this.client.request('POST', path, payload, {}, customHeaders);
   }
 
   /**
@@ -41,16 +41,16 @@ class AdminCustomerGroupsResource extends BaseResource {
   retrieve(
     id: string,
     query?: AdminGetCustomerGroupsGroupParams,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminCustomerGroupsRes> {
-    let path = `/admin/customer-groups/${id}`
+    let path = `/admin/customer-groups/${id}`;
 
     if (query) {
-      const queryString = qs.stringify(query)
-      path += `?${queryString}`
+      const queryString = qs.stringify(query);
+      path += `?${queryString}`;
     }
 
-    return this.client.request("GET", path, {}, {}, customHeaders)
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
   /**
    * Updates a customer group
@@ -62,10 +62,10 @@ class AdminCustomerGroupsResource extends BaseResource {
   update(
     id: string,
     payload: AdminPostCustomerGroupsGroupReq,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminCustomerGroupsRes> {
-    const path = `/admin/customer-groups/${id}`
-    return this.client.request("POST", path, payload, {}, customHeaders)
+    const path = `/admin/customer-groups/${id}`;
+    return this.client.request('POST', path, payload, {}, customHeaders);
   }
 
   /**
@@ -76,10 +76,10 @@ class AdminCustomerGroupsResource extends BaseResource {
    */
   delete(
     id: string,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminCustomerGroupsDeleteRes> {
-    const path = `/admin/customer-groups/${id}`
-    return this.client.request("DELETE", path, {}, {}, customHeaders)
+    const path = `/admin/customer-groups/${id}`;
+    return this.client.request('DELETE', path, {}, {}, customHeaders);
   }
 
   /**
@@ -90,16 +90,16 @@ class AdminCustomerGroupsResource extends BaseResource {
    */
   list(
     query?: AdminGetCustomerGroupsParams,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminCustomerGroupsListRes> {
-    let path = `/admin/customer-groups`
+    let path = `/admin/customer-groups`;
 
     if (query) {
-      const queryString = qs.stringify(query)
-      path = `/admin/customer-groups?${queryString}`
+      const queryString = qs.stringify(query);
+      path = `/admin/customer-groups?${queryString}`;
     }
 
-    return this.client.request("GET", path, {}, {}, customHeaders)
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 
   /**
@@ -112,10 +112,10 @@ class AdminCustomerGroupsResource extends BaseResource {
   addCustomers(
     id: string,
     payload: AdminPostCustomerGroupsGroupCustomersBatchReq,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminCustomerGroupsRes> {
-    const path = `/admin/customer-groups/${id}/customers/batch`
-    return this.client.request("POST", path, payload, {}, customHeaders)
+    const path = `/admin/customer-groups/${id}/customers/batch`;
+    return this.client.request('POST', path, payload, {}, customHeaders);
   }
 
   /**
@@ -128,10 +128,10 @@ class AdminCustomerGroupsResource extends BaseResource {
   removeCustomers(
     id: string,
     payload: AdminDeleteCustomerGroupsGroupCustomerBatchReq,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminCustomerGroupsRes> {
-    const path = `/admin/customer-groups/${id}/customers/batch`
-    return this.client.request("DELETE", path, payload, {}, customHeaders)
+    const path = `/admin/customer-groups/${id}/customers/batch`;
+    return this.client.request('DELETE', path, payload, {}, customHeaders);
   }
 
   /**
@@ -144,17 +144,17 @@ class AdminCustomerGroupsResource extends BaseResource {
   listCustomers(
     id: string,
     query?: AdminGetCustomersParams,
-    customHeaders: Record<string, any> = {}
+    customHeaders: Record<string, any> = {},
   ): ResponsePromise<AdminCustomersListRes> {
-    let path = `/admin/customer-groups/${id}/customers`
+    let path = `/admin/customer-groups/${id}/customers`;
 
     if (query) {
-      const queryString = qs.stringify(query)
-      path += `?${queryString}`
+      const queryString = qs.stringify(query);
+      path += `?${queryString}`;
     }
 
-    return this.client.request("GET", path, {}, {}, customHeaders)
+    return this.client.request('GET', path, {}, {}, customHeaders);
   }
 }
 
-export default AdminCustomerGroupsResource
+export default AdminCustomerGroupsResource;

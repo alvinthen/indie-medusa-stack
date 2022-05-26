@@ -1,11 +1,32 @@
-import { Link } from '@remix-run/react';
+import type { Product } from '@medusajs/medusa';
+import type { LoaderFunction } from '@remix-run/node';
+import { json } from '@remix-run/node';
+import { Link, useLoaderData } from '@remix-run/react';
+import Medusa from '~/medusa-client';
 
 import { useOptionalUser } from '~/utils';
 
+export const loader: LoaderFunction = async () => {
+  const medusa = new Medusa({
+    maxRetries: 0,
+    baseUrl: 'http://localhost:9000',
+  });
+
+  const { products } = await medusa.products.list();
+  return json<{ products: Product[] }>({ products });
+};
+
 export default function Index() {
   const user = useOptionalUser();
+  const { products } = useLoaderData<{ products: Product[] }>();
+
   return (
     <main className="relative min-h-screen bg-white sm:flex sm:items-center sm:justify-center">
+      <ol>
+        {products.map((p) => (
+          <li key={p.id}>{p.title}</li>
+        ))}
+      </ol>
       <div className="relative sm:pb-16 sm:pt-8">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="relative shadow-xl sm:overflow-hidden sm:rounded-2xl">

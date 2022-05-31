@@ -1,7 +1,9 @@
 import { useMatches } from '@remix-run/react';
 import { useMemo } from 'react';
+import invariant from 'tiny-invariant';
 
 import type { User } from '~/models/user.server';
+import type { NewCart } from './models/medusa.server';
 
 const DEFAULT_REDIRECT = '/';
 
@@ -54,6 +56,13 @@ export function useOptionalUser(): User | undefined {
     return undefined;
   }
   return data.user;
+}
+
+export function useCart(): NewCart {
+  const data = useMatchesData('root');
+  const cart = data?.cart as NewCart | undefined;
+  invariant(cart, 'Cart has not been created.');
+  return cart;
 }
 
 export function useUser(): User {

@@ -35,6 +35,8 @@
     "@remix-run/serve": "*",
     "@remix-run/server-runtime": "*",
     "bcryptjs": "^2.4.3",
+    "form-data": "^4.0.0",
+    "qs": "^6.10.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "tiny-invariant": "^1.2.0"

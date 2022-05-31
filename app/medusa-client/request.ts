@@ -6,7 +6,7 @@ const unAuthenticatedAdminEndpoints: Record<string, string> = {
 };
 export interface Config {
   baseUrl: string;
-  maxRetries: number;
+  maxRetries?: number;
   apiKey?: string;
 }
 export interface RequestOptions {

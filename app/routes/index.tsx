@@ -103,7 +103,7 @@ export default function Index() {
                     key={p.id}
                     className="w-full rounded-lg border border-gray-100 p-6 text-left transition-colors hover:border-gray-900 hover:text-gray-900 md:w-auto"
                   >
-                    <Link to={`/product/${p.id}`}>
+                    <Link to={`/products/${p.id}`}>
                       <div>
                         <h2 className="mb-2 text-xl font-medium">{p.title}</h2>
                         <p>{formatPrices(cart, p.variants[0])}</p>

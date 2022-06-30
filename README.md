@@ -1,17 +1,17 @@
-# Remix Indie Thin Stack
+# Remix Indie Medusa Stack (Work in progress)
 
-A thin Remix app without the data layer. Great for integrating with headless CMS
+An e-commerce Remix app with [Medusa](https://medusajs.com) as the backend.
 
 Learn more about [Remix Stacks](https://remix.run/stacks).
 
 ```
-npx create-remix --template alvinthen/indie-thin-stack
+npx create-remix --template alvinthen/indie-medusa-stack
 ```
 
 or
 
 ```
-yarn create remix --template alvinthen/indie-thin-stack
+yarn create remix --template alvinthen/indie-medusa-stack
 ```
 
 ## What's in the stack
@@ -30,6 +30,10 @@ yarn create remix --template alvinthen/indie-thin-stack
 
 Not a fan of bits of the stack? Fork it, change it, and use `yarn create remix --template your/repo`! Make it your own.
 
+## Prerequisite
+
+Run a Medusa server locally or somewhere in the cloud. Set ENV `MEDUSA_URL={YOUR MEDUSA URL}`. Follow the [Medusa Quickstart Guide](https://docs.medusajs.com/quickstart/quick-start) to spin up your own server.
+
 ## Development
 
 - Start dev server:
@@ -47,11 +51,10 @@ The mock API creates a new user with some data you can use to get started:
 
 ### Relevant code:
 
-This is a pretty simple note-taking thin app relying on API. The main functionality is creating users, logging in and out, and creating and deleting notes.
+This is a pretty simple e-commerce app relying on API. The main functionality is viewing products, add to cart, and checkout.
 
-- creating users, and logging in and out [./app/models/user.server.ts](./app/models/user.server.ts)
-- user sessions, and verifying them [./app/session.server.ts](./app/session.server.ts)
-- creating, and deleting notes [./app/models/note.server.ts](./app/models/note.server.ts)
+- Medusa client modded from Medusa Client to use `fetch` [Medusa Client](https://www.npmjs.com/package/@medusajs/medusa-js)
+- Most functions rely on Medusa Client, including the cart function.
 
 ## Deployment
 

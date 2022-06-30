@@ -6,6 +6,7 @@ import { json } from '@remix-run/server-runtime';
 import classNames from 'classnames';
 import { useState, useEffect } from 'react';
 import invariant from 'tiny-invariant';
+import NavBar from '~/components/NavBar';
 import { createClient } from '~/models/medusa.server';
 import { useCart } from '~/utils';
 import { formatPrices } from '~/utils/prices';
@@ -93,82 +94,85 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row">
-      <div className="h-[50vh] w-full lg:h-screen lg:w-1/2 lg:flex-1">
-        <img
-          src={product.thumbnail}
-          alt={product.title}
-          className="h-full w-full object-cover"
-        />
-      </div>
-      <div className="space-y-6 p-4 lg:flex-1">
-        <div>
-          <h1 className="text-2xl font-bold">{product.title}</h1>
-          <h6>{formatPrices(cart, product.variants[0])}</h6>
+    <>
+      <NavBar />
+      <div className="flex flex-col lg:flex-row">
+        <div className="h-[50vh] w-full lg:h-screen lg:w-1/2 lg:flex-1">
+          <img
+            src={product.thumbnail}
+            alt={product.title}
+            className="h-full w-full object-cover"
+          />
         </div>
-
-        <div className="space-y-4">
-          <h6>Select Size</h6>
-          <div className="flex flex-row flex-wrap gap-4">
-            {product.variants
-              .slice(0)
-              .reverse()
-              .map((v) => {
-                return (
-                  <button
-                    key={v.id}
-                    className={classNames(
-                      'rounded-md p-3',
-                      v.title == options.size
-                        ? 'bg-gray-700 text-white hover:bg-gray-600'
-                        : 'bg-gray-300 text-black hover:bg-gray-400',
-                    )}
-                    onClick={() =>
-                      setOptions({
-                        variantId: v.id,
-                        quantity: options.quantity,
-                        size: v.title,
-                      })
-                    }
-                  >
-                    {v.title}
-                  </button>
-                );
-              })}
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <h6>Select Quantity</h6>
+        <div className="space-y-6 p-4 lg:mt-8 lg:flex-1">
           <div>
-            <button
-              className="h-12 w-12 hover:bg-gray-300"
-              onClick={() => handleQtyChange('dec')}
-            >
-              -
-            </button>
-            <span className="mx-6">{options.quantity}</span>
-            <button
-              className="h-12 w-12 hover:bg-gray-300"
-              onClick={() => handleQtyChange('inc')}
-            >
-              +
-            </button>
+            <h1 className="text-2xl font-bold">{product.title}</h1>
+            <h6>{formatPrices(cart, product.variants[0])}</h6>
           </div>
-        </div>
 
-        <form action="">
-          <button type="submit">
-            <div className="flex flex-row rounded-md bg-gray-700 p-3 text-white hover:bg-gray-600">
-              Add to bag <ShoppingBagIcon className="ml-3 h-5 w-5" />
+          <div className="space-y-4">
+            <h6>Select Size</h6>
+            <div className="flex flex-row flex-wrap gap-4">
+              {product.variants
+                .slice(0)
+                .reverse()
+                .map((v) => {
+                  return (
+                    <button
+                      key={v.id}
+                      className={classNames(
+                        'rounded-md p-3',
+                        v.title == options.size
+                          ? 'bg-gray-700 text-white hover:bg-gray-600'
+                          : 'bg-gray-300 text-black hover:bg-gray-400',
+                      )}
+                      onClick={() =>
+                        setOptions({
+                          variantId: v.id,
+                          quantity: options.quantity,
+                          size: v.title,
+                        })
+                      }
+                    >
+                      {v.title}
+                    </button>
+                  );
+                })}
             </div>
-          </button>
-        </form>
+          </div>
 
-        <h6>Product Description</h6>
-        <p>{product.description}</p>
+          <div className="space-y-4">
+            <h6>Select Quantity</h6>
+            <div>
+              <button
+                className="h-12 w-12 hover:bg-gray-300"
+                onClick={() => handleQtyChange('dec')}
+              >
+                -
+              </button>
+              <span className="mx-6">{options.quantity}</span>
+              <button
+                className="h-12 w-12 hover:bg-gray-300"
+                onClick={() => handleQtyChange('inc')}
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <form action="">
+            <button type="submit">
+              <div className="flex flex-row rounded-md bg-gray-700 p-3 text-white hover:bg-gray-600">
+                Add to bag <ShoppingBagIcon className="ml-3 h-5 w-5" />
+              </div>
+            </button>
+          </form>
+
+          <h6>Product Description</h6>
+          <p>{product.description}</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
